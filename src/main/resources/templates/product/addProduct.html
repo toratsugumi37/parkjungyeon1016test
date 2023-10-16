@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>등록</title>
+    <style>
+        .field-error {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="" method="POST" th:object="${addForm}">
+            <span>pname</span><input type="text" name="pname" id="pname" th:value="*{pname}">
+            <span class="field-error"th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}"></span>
+            <span>quantity</span><input type="text" name="quantity" id="quantity" th:value="*{quantity}">
+            <span class="field-error" th:errors="*{quantity}"></span>
+            <span>price</span><input type="text" name="price" id="price" th:value="*{price}">
+            <span class="field-error" th:errors="*{price}"></span>
+            <span class="field-error" th:errors="*{global}"></span>
+            <input type="submit" value="등록하기">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>전체조회</title>
+</head>
+<body>
+<table>
+    <th>PID</th>
+    <th>PNAME</th>
+    <th>QUANTITY</th>
+    <th>PRICE</th>
+            <tr th:each="vF : ${viewForm}">
+                <td><a href="" th:href="@{/product/viewDetail/{pid}(pid=${vF.pid})}" th:text="${vF.pid}"></a></td>
+                <td><a href="" th:href="@{/product/viewDetail/{pid}(pid=${vF.pid})}" th:text="${vF.pname}"></a></td>
+                <td><a href="" th:href="@{/product/viewDetail/{pid}(pid=${vF.pid})}" th:text="${vF.quantity}"></a></td>
+                <td><a href="" th:href="@{/product/viewDetail/{pid}(pid=${vF.pid})}" th:text="${vF.price}"></a></td>
+            </tr>
+</table>
+<span><button id="btnAdd">등록하기</button></span>
+<script>
+    document.getElementById('btnAdd').addEventListener('click',()=>{
+        location.href=`/product/add`;
+    })
+</script>
+</body>
+</html>

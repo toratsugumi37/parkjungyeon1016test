@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" th:action="@{/product/update/{pid}(pid=${DetailForm.pid})}" method="GET" th:object="${DetailForm}">
+    <p>PID      <input type="text" name="pid" id="pid" th:value="*{pid}" data-set="pid" readonly></p>
+    <p>PNAME    <input type="text" name="pname" id="pname" th:value="*{pname}" readonly></p>
+    <p>QUANTITY <input type="text" name="quantity" id="quantity" th:value="*{quantity}" readonly></p>
+    <p>PRICE    <input type="text" name="price" id="price" th:value="*{price}" readonly></p>
+    <span><button type="button" id="btnUpdate" th:data-pid="*{pid}">수정하기</button></span>
+    <span><button type="button" id="btnDelete" th:data-pid="*{pid}">삭제하기</button></span>
+    <span><button type="button" id="btnList">목록</button></span>
+</form>
+<script>
+    document.getElementById('btnDelete').addEventListener('click',(e)=>{
+        if(confirm('삭제?')){
+            let pid = e.target.dataset.pid;
+            location.href=`/product/delete/${pid}`;
+        }
+    })
+
+    document.getElementById('btnUpdate').addEventListener('click',(e)=>{
+        let pid = e.target.dataset.pid;
+        location.href=`/product/update/${pid}`;
+    })
+
+    document.getElementById('btnList').addEventListener('click',(e)=>{
+        location.href=`/product/view`;
+    })
+
+</script>
+</body>
+</html>

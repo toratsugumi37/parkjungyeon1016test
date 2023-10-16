@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .field-error {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="POST" th:object="${updateForm}">
+    <p>PID      <input type="text" id="pid" name="pid" th:value="*{pid}" readonly></p>
+    <p>PNAME    <input type="text" id="pname" name="pname" th:value="*{pname}"></p>
+    <span class="field-error"th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}"></span>
+    <p>QUANTITY <input type="text" id="quantity" name="quantity" th:value="*{quantity}"></p>
+    <span class="field-error" th:errors="*{quantity}"></span>
+    <p>PRICE    <input type="text" id="price" name="price" th:value="*{price}"></p>
+    <span class="field-error" th:errors="*{price}"></span><br>
+    <span><input type="submit" value="수정하기"></span>
+    <span><button id="btnCancel" th:data-pid="*{pid}">취소하기</button></span>
+</form>
+<script>
+    document.getElementById('btnCancel').addEventListener('click',(e)=>{
+        let pid = e.target.dataset.pid;
+        location.href=`/product/view/${pid}`;
+    })
+</script>
+</body>
+</html>
